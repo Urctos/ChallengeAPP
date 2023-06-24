@@ -1,23 +1,35 @@
-﻿
-int number = 564888;
-string numberInString = number.ToString();
-char[] letters = numberInString.ToArray();
-int[] outcome = new int[10];
-char[] meter = { '0', '1', '2', '3', '4', '5', '6' , '7', '8', '9' };
+﻿// Klasa np użykownik systemu czy zamówienie 
 
-foreach (char number2 in numberInString)
+
+User user2 = new User("Jan");
+User user3 = new User("Ola");
+User user4 = new User("Aleksander");
+
+//user1.login = "Jan";
+
+var name = user1.Login;
+class User
 {
-    for(int i = 0; i < meter.Length; i++)
+
+    string login; // public - dostęp do zmiennej dostepny poza klasą
+    string password; // jak nie ma modyfiktaora to z automatu jest private
+    string name;
+
+    public User(string login)  // uruchami się gyd twory się nowy obiekt
     {
-        if (meter[i] == number2)
-        {
-            outcome[i]++;
-            
-        }
+        this.login = login;
+    }
+    public User(string login, string password)  
+    {
+        this.login = login;
+        this.password = password;
 
     }
+
+    public string Login { get; private set; }
+    public string Password { get; private set; }
+
 }
-for (int i = 0; i < outcome.Length; i ++)
-{
-    Console.WriteLine(meter[i] + " => " + outcome[i]);
-}
+
+
+
