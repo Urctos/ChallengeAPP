@@ -1,35 +1,25 @@
 ﻿// Klasa np użykownik systemu czy zamówienie 
 
+using CHallengeAPP;
 
-User user2 = new User("Jan");
-User user3 = new User("Ola");
-User user4 = new User("Aleksander");
+/*User user1 = new User("Ignacy", "434235");
+User user2 = new User("Jan", "434235");
+User user3 = new User("Ola", "434235");
+User user4 = new User("Aleksander", "434235");
 
 //user1.login = "Jan";
 
-var name = user1.Login;
-class User
-{
+user2.AddScore(5);
+user2.AddScore(2);
 
-    string login; // public - dostęp do zmiennej dostepny poza klasą
-    string password; // jak nie ma modyfiktaora to z automatu jest private
-    string name;
+var result = user2.Result;
+Console.WriteLine(result);
+var name = User.GameName;
+var pi = Math.PI; */
 
-    public User(string login)  // uruchami się gyd twory się nowy obiekt
-    {
-        this.login = login;
-    }
-    public User(string login, string password)  
-    {
-        this.login = login;
-        this.password = password;
+Employee nr1 = new Employee("Jan", "Kowalski", 23, 4);
 
-    }
 
-    public string Login { get; private set; }
-    public string Password { get; private set; }
-
-}
 
 
 
