@@ -8,7 +8,7 @@ namespace CHallengeApp.Tests
         public void WhenEmployeeCollectsOnlyPositiveGradesShouldCorrectResult()
         {
             //arrange
-            var employ1 = new Employee("Jeremi", "Wiœniowiecki", 35);
+            var employ1 = new Employee("Jeremi", "WiÅ“niowiecki", 35);
             employ1.AddGrade(10);
             employ1.AddGrade(15);
             employ1.AddGrade(5);
@@ -24,7 +24,7 @@ namespace CHallengeApp.Tests
         public void WhenEmployeeCollectsGradesShouldCorrectResult()
         {
             //arrange
-            var employ2 = new Employee("Micha³", "Wo³odyjowski", 42);
+            var employ2 = new Employee("MichaÂ³", "WoÂ³odyjowski", 42);
             employ2.AddGrade(3);
             employ2.AddGrade(3);
             employ2.AddGrade(-4);
@@ -37,10 +37,10 @@ namespace CHallengeApp.Tests
         }
 
         [Test]// Sprawdzenie dodawania
-        public void CWhenEmployeeCollectsOnlyNegativeGradesShouldCorrectResultSumOperation()
+        public void WhenEmployeeCollectsOnlyNegativeGradesShouldCorrectResult()
         {
             //arrange
-            var employ3 = new Employee("Onufry", "Zag³oba", 65);
+            var employ3 = new Employee("Onufry", "ZagÂ³oba", 65);
             employ3.AddGrade(-4);
             employ3.AddGrade(-5);
             employ3.AddGrade(-8);
