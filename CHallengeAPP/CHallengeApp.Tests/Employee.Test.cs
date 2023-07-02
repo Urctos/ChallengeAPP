@@ -4,7 +4,7 @@ namespace CHallengeApp.Tests
 {
     public class Tests
     {
-        [Test]// Sprawdzenie zliczania jedynie dodatnich ocen
+        [Test]// Sprawdzenie jdynie dodatnich ocen
         public void WhenEmployeeCollectsOnlyPositiveGradesShouldCorrectResult()
         {
             //arrange
@@ -20,7 +20,7 @@ namespace CHallengeApp.Tests
             Assert.AreEqual(30, result);
         }
 
-        [Test]// Sprawdzenie dodawania
+        [Test]//  Sprawdzenie mieszanych ocen 
         public void WhenEmployeeCollectsGradesShouldCorrectResult()
         {
             //arrange
@@ -36,7 +36,7 @@ namespace CHallengeApp.Tests
             Assert.AreEqual(2, result2);
         }
 
-        [Test]// Sprawdzenie dodawania
+        [Test]// Sprawdzenie jedynie ujemnych ocen
         public void WhenEmployeeCollectsOnlyNegativeGradesShouldCorrectResult()
         {
             //arrange
@@ -44,7 +44,6 @@ namespace CHallengeApp.Tests
             employ3.AddGrade(-4);
             employ3.AddGrade(-5);
             employ3.AddGrade(-8);
-
 
             //act
             var result3 = employ3.Result;
