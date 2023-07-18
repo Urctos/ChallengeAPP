@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -25,10 +26,15 @@ namespace CHallengeAPP
             
         }
 
+        public Employee()
+        {
+
+        }
+
         public string Name { get; private set; }
         public string Surname { get; private set; }
         public int Age { get; private set; }
-        //public int Grade { get; private set; }
+        
 
         public float Result
         {
@@ -48,74 +54,36 @@ namespace CHallengeAPP
 
             foreach(var grade in this.grade)
             {
-                statistics.Max = Math.Max(statistics.Max, grade);
-                statistics.Min = Math.Min(statistics.Min, grade);
-                statistics.Average += grade;
+                if (grade >= 0)
+                {
+                    statistics.Max = Math.Max(statistics.Max, grade);
+                    statistics.Min = Math.Min(statistics.Min, grade);
+                    statistics.Average += grade;
+                }
+
             }
        
-            statistics.Average = statistics.Average / this.grade.Count;         
-            return statistics;
-        }
-
-        public Statistics GetStatisticsWithFor()
-        {
-            var statistics = new Statistics();
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
-
-        
-            for (var i =0; i < this.grade.Count; i++)
+            statistics.Average = statistics.Average / this.grade.Count;
+            
+            switch(statistics.Average)
             {
-                statistics.Max = Math.Max(statistics.Max, this.grade[i]);
-                statistics.Min = Math.Min(statistics.Min, this.grade[i]);
-                statistics.Average += this.grade[i];
+                case var average when average >= 80:
+                    statistics.AverageLetter = 'A';
+                    break;
+                case var average when average >= 60:
+                    statistics.AverageLetter = 'B';
+                    break;
+                case var average when average >= 40:
+                    statistics.AverageLetter = 'C';
+                    break;
+                case var average when average >= 20:
+                    statistics.AverageLetter = 'D';
+                    break;
+                default:
+                    statistics.AverageLetter = 'E';
+                    break;
             }
 
-            statistics.Average /= this.grade.Count;
-            return statistics;
-        }
-
-        public Statistics GetStatisticsWithWhile()
-        {
-            var statistics = new Statistics();
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
-
-            var index = 0;
-
-            while (index < this.grade.Count)
-            {
-
-               statistics.Max = Math.Max(statistics.Max, this.grade[index]);
-               statistics.Min = Math.Min(statistics.Min, this.grade[index]);
-               statistics.Average += this.grade[index];
-               index++;   
-            };
-
-            statistics.Average /= this.grade.Count;
-            return statistics;
-        }
-
-        public Statistics GetStatisticsWithDoWhile()
-        {
-            var statistics = new Statistics();
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
-
-            var index = 0;
-
-            do
-            {
-                statistics.Max = Math.Max(statistics.Max, this.grade[index]);
-                statistics.Min = Math.Min(statistics.Min, this.grade[index]);
-                statistics.Average += this.grade[index];
-                index++;
-            } while (index < this.grade.Count);
-
-            statistics.Average /= this.grade.Count;
             return statistics;
         }
 
@@ -135,8 +103,6 @@ namespace CHallengeAPP
         {
             if(float.TryParse(grade, out float result))
             {
-                //var value = float.Parse(grade);
-                //this.AddGrade(value);
                 this.AddGrade(result);
             }
             else
@@ -157,6 +123,40 @@ namespace CHallengeAPP
             float result = (float)Math.Round(grade, 2);
             this.AddGrade(result);
         }
+
+        public void AddGrade(char grade)
+        {
+            switch (grade)
+            {
+                case 'A':
+                case 'a':
+                    this.grade.Add(100);
+                    break;
+                case 'B':
+                case 'b':
+                    this.grade.Add(80);
+                    break;
+                case 'C':
+                case 'c':
+
+                    this.grade.Add(60);
+                    break;
+                case 'D':
+                case 'd':
+                    this.grade.Add(40);
+                    break;
+                case 'E':
+                case 'e':
+                    this.grade.Add(20);
+                    break;
+                default:
+                    Console.WriteLine("Wrong letter");
+                    this.grade.Add(0);
+                    break;
+
+            }
+        }
+
 
 
     }

@@ -4,94 +4,116 @@ namespace CHallengeApp.Tests
 {
     public class EmployeeTests
     {
-        [Test]// Sprawdzenie Max dla dodanich ocen
+        [Test]// Sprawdzenie Max dla  ocen
         public void GetStatisticsMaxValuesTest()
         {
             //arrange
-            Employee employee1 = new Employee("Jeremi", "Wiśniowiecki", 35);
-            employee1.AddGrade(10);
-            employee1.AddGrade(15);
-            employee1.AddGrade(5);
+            var employee = new Employee("Wincent", "Adam");
+            employee.AddGrade(10);
+            employee.AddGrade(15);
+            employee.AddGrade(55);
+            employee.AddGrade(5);
+            employee.AddGrade(13);
+            employee.AddGrade(11);
 
             //act
-            Statistics statistics = employee1.GetStatistics();
+            var statistics = employee.GetStatistics();
 
             //assert
-            Assert.AreEqual(15, statistics.Max);
+            Assert.AreEqual(55, statistics.Max);
         }
 
-        [Test]// Sprawdzenie Max dla ujemnych ocen
-        public void GetStatisticsMaxValuesTestNegativeValues()
-        {
-            Employee employee1 = new Employee("Jeremi", "Wiśniowiecki", 35);
-            employee1.AddGrade(-10);
-            employee1.AddGrade(-15);
-            employee1.AddGrade(-5);
-
-            Statistics statistics = employee1.GetStatistics();
-            Assert.AreEqual(-5, statistics.Max);
-        }
-
-        [Test]// Sprawdzenie Min dla dodanich ocen
+        [Test]// Sprawdzenie Min dla 
         public void GetStatisticsMinValuesTest()
         {
-            Employee employee1 = new Employee("Jeremi", "Wiśniowiecki", 35);
-            employee1.AddGrade(10);
-            employee1.AddGrade(15);
-            employee1.AddGrade(5);
+            var employee = new Employee("Wincent", "Adam");
+            employee.AddGrade(10);
+            employee.AddGrade(15);
+            employee.AddGrade(55);
+            employee.AddGrade(5);
+            employee.AddGrade(13);
+            employee.AddGrade(11);
 
-            Statistics statistics = employee1.GetStatistics();
+            var statistics = employee.GetStatistics();
             Assert.AreEqual(5, statistics.Min);
         }
 
-        [Test]// Sprawdzenie Min dla ujemnych ocen
-        public void GetStatisticsMinValuesTestNegativeValues()
-        {
-            Employee employee1 = new Employee("Jeremi", "Wiśniowiecki", 35);
-            employee1.AddGrade(-10);
-            employee1.AddGrade(-15);
-            employee1.AddGrade(-5);
-
-            Statistics statistics = employee1.GetStatistics();
-            Assert.AreEqual(-15, statistics.Min);
-        }
-
-        [Test]// Sprawdzenie Average dla ujemnych ocen
+        [Test]// Sprawdzenie średniej 
         public void GetStatisticsAverageNegativeValuesTest()
         {
-            Employee employee1 = new Employee("Jeremi", "Wiśniowiecki", 35);
-            employee1.AddGrade(-10);
-            employee1.AddGrade(-15);
-            employee1.AddGrade(-5);
+            var employee = new Employee("Wincent", "Adam");
+            employee.AddGrade(10);
+            employee.AddGrade(15);
+            employee.AddGrade(55);
+            employee.AddGrade(5);
+            employee.AddGrade(13);
+            employee.AddGrade(10);
 
-            Statistics statistics = employee1.GetStatistics();
-            Assert.AreEqual(-10, statistics.Average);
-
-        }
-
-        [Test]// Sprawdzenie Average dla ujemnych ocen
-        public void GetStatisticsAverageValuesTest()
-        {
-            Employee employee1 = new Employee("Jeremi", "Wiśniowiecki", 35);
-            employee1.AddGrade(10);
-            employee1.AddGrade(15);
-            employee1.AddGrade (5);
-
-            Statistics statistics = employee1.GetStatistics();
-            Assert.AreEqual(10, statistics.Average);
+            var statistics = employee.GetStatistics();
+            Assert.AreEqual(18, statistics.Average);
 
         }
-        [Test]// Sprawdzenie Average dla ujemnych ocen
-        public void GetStatisticsAverageMixTest()
+
+        [Test]
+        public void GetStatisticsAverageReturnCorrectLetterA()
         {
-            Employee employee1 = new Employee("Jeremi", "Wiśniowiecki", 35);
-            employee1.AddGrade(-10);
-            employee1.AddGrade(15);
-            employee1.AddGrade(-5);
+            var employee = new Employee("Wincent", "Adam");
+            employee.AddGrade(81);
+            employee.AddGrade(80);
+            employee.AddGrade(85);
 
-            Statistics statistics = employee1.GetStatistics();
-            Assert.AreEqual(0, statistics.Average);
 
+            Statistics statistics = employee.GetStatistics();
+            Assert.AreEqual('A', statistics.AverageLetter);
+
+        }
+        [Test]
+        public void GetStatisticsAverageReturnCorrectLetterB()
+        {
+            var employee = new Employee("Wincent", "Adam");
+            employee.AddGrade(75);
+            employee.AddGrade(69);
+            employee.AddGrade(71);
+
+            Statistics statistics = employee.GetStatistics();
+            Assert.AreEqual('B', statistics.AverageLetter);
+        }
+
+        [Test]
+        public void GetStatisticsAverageReturnCorrectLetterC()
+        {
+            var employee = new Employee("Wincent", "Adam");
+            employee.AddGrade(44);
+            employee.AddGrade(41);
+            employee.AddGrade(50);
+ 
+
+            Statistics statistics = employee.GetStatistics();
+            Assert.AreEqual('C', statistics.AverageLetter);
+        }
+
+        [Test]
+        public void GetStatisticsAverageReturnCorrectLetterD()
+        {
+            var employee = new Employee("Wincent", "Adam");
+            employee.AddGrade(18);
+            employee.AddGrade(29);
+            employee.AddGrade(16);
+
+            Statistics statistics = employee.GetStatistics();
+            Assert.AreEqual('D', statistics.AverageLetter);
+        }
+
+        [Test]
+        public void GetStatisticsAverageReturnCorrectLetterE()
+        {
+            var employee = new Employee("Wincent", "Adam");
+            employee.AddGrade(3);
+            employee.AddGrade(4);
+            employee.AddGrade(3);
+
+            Statistics statistics = employee.GetStatistics();
+            Assert.AreEqual('E', statistics.AverageLetter);
         }
     }
 }
