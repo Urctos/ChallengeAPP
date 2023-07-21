@@ -10,7 +10,10 @@ namespace CHallengeAPP
 {
     public class Employee
     {
-          
+        //private readonly char sex = 'M';
+        //private const char sex = 'M';
+
+
         private  List<float>grade = new List<float>(); 
         public Employee(string name, string surname, int age)
         {
@@ -23,6 +26,7 @@ namespace CHallengeAPP
         {
             this.Name = name;
             this.Surname = surname;
+            //this.sex = 'K';
             
         }
 
@@ -95,7 +99,7 @@ namespace CHallengeAPP
             }
             else
             {
-                Console.WriteLine("Invalid grade value");
+                throw new Exception("invalid grade value");
             }
         }
 
@@ -107,7 +111,7 @@ namespace CHallengeAPP
             }
             else
             {
-                Console.WriteLine("String is not float");
+                throw new Exception("String is not float");               
             }
            
         }
@@ -150,9 +154,8 @@ namespace CHallengeAPP
                     this.grade.Add(20);
                     break;
                 default:
-                    Console.WriteLine("Wrong letter");
-                    this.grade.Add(0);
-                    break;
+                    throw new Exception("Wrong letter");
+
 
             }
         }

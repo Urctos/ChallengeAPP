@@ -4,11 +4,13 @@
 Console.WriteLine("=======================================================================");
 Console.WriteLine("Witaj w programie do oceny Twoich pracowników!");
 Console.WriteLine("Aplikacja wyliczy minimalną, maksymalną oraz średnią z uzyskanych ocen.");
+Console.WriteLine("Zakres ocen: 1-100");
 Console.WriteLine("Aby zakończyć wprowadzanie ocen wpisz literę: q.");
 Console.WriteLine("=======================================================================");
 Console.WriteLine();
 
 var employee = new Employee("Wincent", "Adam");
+
 
 while (true)
 {
@@ -18,7 +20,16 @@ while (true)
     {
         break;
     }
-    employee.AddGrade(input);
+
+    try
+    {
+        employee.AddGrade(input);
+    }
+    catch(Exception e)
+    {
+        Console.WriteLine($"Nieprawidłowa ocena: {e.Message}");
+    }
+
 }
 var statistics = employee.GetStatistics();
 Console.WriteLine("=======================================================================");
