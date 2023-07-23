@@ -8,36 +8,37 @@ using System.Threading.Tasks;
 
 namespace CHallengeAPP
 {
-    public class Employee
+    public class Employee : Person
     {
-        //private readonly char sex = 'M';
-        //private const char sex = 'M';
 
+        private  List<float>grade = new List<float>();
 
-        private  List<float>grade = new List<float>(); 
-        public Employee(string name, string surname, int age)
+        public Employee()
+            : base()
         {
-            this.Name = name;
-            this.Surname = surname;
-            this.Age = age;
-        }
-
-        public Employee(string name, string surname)
-        {
-            this.Name = name;
-            this.Surname = surname;
-            //this.sex = 'K';
             
         }
 
-        public Employee()
+        public Employee(string name)
+            : base(name)
         {
 
         }
 
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
-        public int Age { get; private set; }
+        public Employee(string name, string surname)
+            : base(name, surname)
+        {
+
+        }
+
+        public Employee(string name, string surname, char sex)
+            : base(name, surname, sex)
+        {
+
+        }
+
+
+        //public int Age { get; private set; }
         
 
         public float Result
