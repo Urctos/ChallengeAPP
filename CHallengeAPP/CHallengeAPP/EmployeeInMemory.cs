@@ -1,19 +1,32 @@
-﻿namespace CHallengeAPP
+﻿using System.Globalization;
+using System.Reflection.Metadata;
+
+namespace CHallengeAPP
 {
     public class EmployeeInMemory : EmployeeBase // : IEmployee
     {
+
         private List<float> grade = new List<float>();
         public EmployeeInMemory(string name, string surname)
             : base(name, surname)
         {
 
+ 
         }
+
+        public override event GradeAddedDelegate GradeAdded;
+
 
         public override void AddGrade(float grade)
         {
             if (grade >= 0 && grade <= 100)
             {
                 this.grade.Add(grade);
+
+                if(GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
+                }
             }
             else
             {

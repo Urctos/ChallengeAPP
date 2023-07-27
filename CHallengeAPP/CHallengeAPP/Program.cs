@@ -9,47 +9,44 @@ Console.WriteLine("Aby zakończyć wprowadzanie ocen wpisz literę: q.");
 Console.WriteLine("=======================================================================");
 Console.WriteLine();
 
-var employee = new EmployeeInFile("Wincent", "Adam");
-
-employee.AddGrade(5);
-employee.AddGrade('A');
-employee.AddGrade(13);
-employee.AddGrade(27);
-employee.AddGrade(80);
+var employee = new EmployeeInMemory("Wincent", "Adam");
+employee.GradeAdded += EmployeeGradeAdded;
 
 
+while (true)
+{
+    Console.WriteLine("wprowadz ocenę: ");
+    var input = Console.ReadLine();
+    if (input == "q" || input == "q")
+    {
+        break;
+    }
 
-//while (true)
-//{
-//    Console.WriteLine("wprowadz ocenę: ");
-//    var input = Console.ReadLine();
-//    if (input == "q" || input == "q")
-//    {
-//        break;
-//    }
+    try
+    {
+        employee.AddGrade(input);
+        Console.WriteLine();
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine($"nieprawidłowa ocena: {e.Message}");
+    }
 
-//    try
-//    {
-//        employee.AddGrade(input);
-//    }
-//    catch (Exception e)
-//    {
-//        Console.WriteLine($"nieprawidłowa ocena: {e.Message}");
-//    }
-
-//}
+}
 var statistics = employee.GetStatistics();
-//Console.WriteLine("=======================================================================");
+Console.WriteLine("=======================================================================");
 //Console.WriteLine($"oto wyniki pracownika: {employee.name} {employee.surname} ");
 //Console.WriteLine("=======================================================================");
 Console.WriteLine($"ocena literowa:     {statistics.AverageLetter}");
 Console.WriteLine($"średnia z ocen:     {statistics.Average}");
 Console.WriteLine($"wartość minimalna:  {statistics.Min}");
 Console.WriteLine($"wartość maksymalna: {statistics.Max}");
-//Console.WriteLine("=======================================================================");
+Console.WriteLine("=======================================================================");
 
-
-
+void EmployeeGradeAdded(object sender, EventArgs args)
+{
+    Console.WriteLine("Dodano nową ocenę! ");
+}
 
 
 
